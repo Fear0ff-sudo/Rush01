@@ -6,7 +6,7 @@
 /*   By: lobaudar <lobaudar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:11:49 by lobaudar          #+#    #+#             */
-/*   Updated: 2026/07/18 16:25:22 by lobaudar         ###   ########.fr       */
+/*   Updated: 2026/07/18 16:46:05 by lobaudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	fill_coll(t_skyscrapers *basic_cell, int i, int coll)
 			j++;
 		}
 	}
-
 }
 
 void	fill_basic_cell_top(t_skyscrapers *basic_cell)
