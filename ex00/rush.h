@@ -6,7 +6,7 @@
 /*   By: lobaudar <lobaudar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 13:59:05 by lobaudar          #+#    #+#             */
-/*   Updated: 2026/07/18 14:31:43 by lobaudar         ###   ########.fr       */
+/*   Updated: 2026/07/18 14:43:06 by lobaudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 
 typedef struct s_skyscrapers
 {
-	char	top[3];
-	char	bottom[3];
-	char	left[3];
-	char	right[3];
-	char	grid[3][3];
+	char	top[4];
+	char	bottom[4];
+	char	left[4];
+	char	right[4];
+	char	grid[4][4];
 }				t_skyscrapers;
 
 
