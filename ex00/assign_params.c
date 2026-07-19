@@ -6,11 +6,11 @@
 /*   By: lmartign <lmartign@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/19 11:23:20 by lmartign          #+#    #+#             */
-/*   Updated: 2026/07/19 14:14:09 by lmartign         ###   ########.fr       */
+/*   Updated: 2026/07/19 14:16:35 by lmartign         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	**ft_asign_params(char *str)
+char	**ft_assign_params(char *str)
 {
 	int		i;
 	int		j;
