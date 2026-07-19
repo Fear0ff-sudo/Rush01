@@ -3,9 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_output.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanet <amanet@student.42nice.fr>          +#+  +:+       +#+        */
+/*   By: lobaudar <lobaudar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 14:20:47 by amanet            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/07/19 13:47:47 by amanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -13,6 +14,13 @@
 #include <unistd.h>
 
 void	print_output(int nb, char grid[nb][nb])
+=======
+/*   Updated: 2026/07/19 13:18:47 by lobaudar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	print_output(struct s_skyscrapers *s1)
+>>>>>>> f68b9d8416de48387f8db973d7dc1c9e24ff6aae
 {
 	int		i;
 	int		j;
