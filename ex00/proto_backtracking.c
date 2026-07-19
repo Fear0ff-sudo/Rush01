@@ -5,19 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lobaudar <lobaudar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/18 20:56:19 by amanet            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/07/19 14:34:18 by amanet           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-#include <stdio.h>
-#include <unistd.h>
-=======
-/*   Updated: 2026/07/19 13:11:17 by lobaudar         ###   ########.fr       */
+/*   Created: 2026/07/19 14:51:33 by lobaudar          #+#    #+#             */
+/*   Updated: 2026/07/19 14:53:10 by lobaudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
->>>>>>> f68b9d8416de48387f8db973d7dc1c9e24ff6aae
+#include <unistd.h>
 
 int	is_possible_relative_left(int nb, char grid[nb][nb], char rule[nb][nb]);
 int	is_possible_relative_top(int nb, char grid[nb][nb], char rule[nb][nb]);
@@ -69,7 +62,6 @@ int	check_double(int nb, char grid[nb][nb], int pos[2], char c)
 	i = 0;
 	while (i < nb)
 	{
-<<<<<<< HEAD
 		if (grid[pos[0]][i] == c || grid[i][pos[1]] == c)
 			return (0);
 		i++;
@@ -94,7 +86,7 @@ int	proto_backtracking(int nb, char grid[nb][nb], char rule[4][nb], int pos[2])
 		next_pos[1] = 0;
 		return (proto_backtracking(nb, grid, rule, next_pos));
 	}
-	c = '1';	
+	c = '1';
 	while (c <= '4')
 	{
 		if (check_double(nb, grid, pos, c) == 1)
@@ -110,12 +102,6 @@ int	proto_backtracking(int nb, char grid[nb][nb], char rule[4][nb], int pos[2])
 			}
 		c++;
 	}
-=======
-
-	}*/
-	printf("%d\n", is_possible(nb, grid, rule));
-	//printf("%d\n", is_possible_relative(nb, grid, rule));
->>>>>>> f68b9d8416de48387f8db973d7dc1c9e24ff6aae
 	return (0);
 }
 
@@ -154,13 +140,10 @@ int	main(void)
 		rule[3][i] = rule_right[i];
 		i++;
 	}
-<<<<<<< HEAD
 	if (proto_backtracking(4, grid, rule, start_pos))
 		printf("finished\n");
 	print_output(4, grid);
 	//printf("%s", grid[0]);
-=======
 	proto_backtracking(4, grid, rule);
 	printf("%s", rule[0]);
->>>>>>> f68b9d8416de48387f8db973d7dc1c9e24ff6aae
 }
