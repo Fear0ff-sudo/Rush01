@@ -6,26 +6,14 @@
 /*   By: amanet <amanet@student.42nice.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 20:56:19 by amanet            #+#    #+#             */
-/*   Updated: 2026/07/19 00:14:30 by amanet           ###   ########.fr       */
+/*   Updated: 2026/07/19 10:23:39 by amanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stdio.h>
-//
-// Note pour moi même au cas ou j'oublie, ou les autres si vous voulez voir mon travail pas fini:
-//
-// Ce code vérifie si les nombres sont unique par ligne et par colone, et vérifie aussi (pour l'instant que la rule left),
-// si la solution est valide selon l'input. Ex: si on a 4: 1234, 1: 4321, etc.... Je me suis arrêté là car il se faisait tard
-// et je manquais d'inspi pour vérifier aussi la rule du top, right, et bottom dans une seule fonction...
-// Il y a aussi la fonction is_finished qui vérifie que aucune case n'est vide.
-//
-// Il manque encore toute la partie qui modifie les cases et se sert de mes fonctions pour voir si le resultat est bon,
-// et retourner en arrière si ce n'est pas le cas. Aussi appelée backtracking...
-//
-// Ah et bien sûr comme j'ai pas fini, je n'ai pas osé le soumettre à la norminette...
-//
 
-int is_possible_relative(int nb, char grid[nb][nb], char rule[nb][nb]) // Juste left pour l'instant
+//int is_possible_relative_left(int nb, char grid[nb][nb], char rule[nb][nb]);
+
+int is_possible_relative_left(int nb, char grid[nb][nb], char rule[nb][nb])
 {
 	int	i;
 	int	j;
@@ -40,11 +28,14 @@ int is_possible_relative(int nb, char grid[nb][nb], char rule[nb][nb]) // Juste 
 		{
 			if (l < grid[i][j] - 48)
 			{
+				//printf("k: %d ", k);
 				l = grid[i][j] - 48;
+				//printf("l: %d\n", l);
 				k++;
 			}
 			j++;
 		}
+		//printf("rule: %d\n", rule[2][i] - 48);
 		if (k != rule[2][i] - 48)
 			return (0);
 		i++;
@@ -52,7 +43,103 @@ int is_possible_relative(int nb, char grid[nb][nb], char rule[nb][nb]) // Juste 
 	return (1);
 }
 
-int	is_possible(int nb, char grid[nb][nb])
+int is_possible_relative_top(int nb, char grid[nb][nb], char rule[nb][nb])
+{
+	int	i;
+	int	j;
+	int k;
+	int l;
+
+	i = 0;
+	while (i < nb)
+	{
+		j = k = l = 0;
+		while (j < nb)
+		{
+			//printf("k: %d ", k);
+			if (l < grid[j][i] - 48)
+			{
+				l = grid[j][i] - 48;
+				//printf("l: %d\n", l);
+				k++;
+			}
+			j++;
+		}
+		//printf("k: %d\n", k);
+		//printf("rule: %d\n", rule[0][i] - 48);	
+		if (k != rule[0][i] - 48)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int is_possible_relative_bottom(int nb, char grid[nb][nb], char rule[nb][nb])
+{
+	int	i;
+	int	j;
+	int k;
+	int l;
+
+	i = 0;
+	while (i < nb)
+	{
+		k = l = 0;
+		j = nb -1;
+		while (j >= 0)
+		{
+			//printf("k: %d ", k);
+			if (l < grid[j][i] - 48)
+			{
+				l = grid[j][i] - 48;
+				//printf("l: %d\n", l);
+				k++;
+			}
+			j--;
+		}
+		//printf("k: %d\n", k);
+		//printf("rule: %d\n", rule[1][i] - 48);	
+		if (k != rule[1][i] - 48)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int is_possible_relative_right(int nb, char grid[nb][nb], char rule[nb][nb])
+{
+	int	i;
+	int	j;
+	int k;
+	int l;
+
+	i = 0;
+	while (i < nb)
+	{
+		k = l = 0;
+		j = nb -1;
+		while (j >= 0)
+		{
+			//printf("k: %d ", k);
+			if (l < grid[i][j] - 48)
+			{
+				l = grid[i][j] - 48;
+				//printf("l: %d\n", l);
+				k++;
+			}
+			j--;
+		}
+		//printf("k: %d\n", k);
+		//printf("rule: %d\n", rule[3][i] - 48);	
+		if (k != rule[3][i] - 48)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+
+int	is_possible_simple(int nb, char grid[nb][nb])
 {
 	int	i;
 	int	j;
@@ -75,6 +162,22 @@ int	is_possible(int nb, char grid[nb][nb])
 			return (0);
 		i++;
 	}
+	return (1);
+}
+
+int is_possible(int nb, char grid[nb][nb], char rule[nb][nb])
+{
+	
+	if(is_possible_simple(nb, grid) == 0)
+		return (0);
+	if (is_possible_relative_top(nb, grid, rule) == 0)
+		return (0);
+	if (is_possible_relative_bottom(nb, grid, rule) == 0)
+		return (0);
+	if (is_possible_relative_left(nb, grid, rule) == 0)
+		return (0);
+	if (is_possible_relative_right(nb, grid, rule) == 0)
+		return (0);
 	return (1);
 }
 
@@ -109,22 +212,22 @@ int	proto_backtracking(int nb, char grid[nb][nb], char rule[nb][nb])
 	{
 	
 	}*/	
-	printf("%d\n", is_possible(nb, grid));
-	printf("%d\n", is_possible_relative(nb, grid, rule));
+	printf("%d\n", is_possible(nb, grid, rule));
+	//printf("%d\n", is_possible_relative(nb, grid, rule));
 	return (0);
 }
 
 int	main(void)
 {
-	char	grid_0[4] = "2314";
-	char	grid_1[4] = "3412";
-	char	grid_2[4] = "4321";
-	char	grid_3[4] = "3421";
+	char	grid_0[4] = "4213";
+	char	grid_1[4] = "3142";
+	char	grid_2[4] = "2431";
+	char	grid_3[4] = "1324";
 	char	grid[4][4];
-	char	rule_top[4] = "2214";
-	char	rule_bottom[4] = "2331";
-	char	rule_left[4] = "3212";
-	char	rule_right[4] = "2321";
+	char	rule_top[4] = "1222";
+	char	rule_bottom[4] = "4231";
+	char	rule_left[4] = "1223";
+	char	rule_right[4] = "2231";
 	char	rule[4][4];
 	int		i;
 
@@ -145,7 +248,7 @@ int	main(void)
 		rule[2][i] = rule_left[i];
 		rule[3][i] = rule_right[i];
 		i++;
-	}
+	}	
 	proto_backtracking(4, grid, rule);
-	printf("%s", grid[0]);
+	printf("%s", rule[0]);
 }
