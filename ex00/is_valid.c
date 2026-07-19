@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lobaudar <lobaudar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmartign <lmartign@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:30:06 by lmartign          #+#    #+#             */
-/*   Updated: 2026/07/19 13:11:28 by lobaudar         ###   ########.fr       */
+/*   Updated: 2026/07/19 14:28:03 by lmartign         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	is_valid(char *av)
+int	is_valid(char *str)
 {
 	int	i;
 	int	count;
@@ -21,13 +21,13 @@ int	is_valid(char *av)
 	i = 0;
 	count = 0;
 	space = 0;
-	while (av[i])
+	while (str[i])
 	{
-		if (av[i] >= '1' && av[i] <= '4')
+		if (str[i] >= '1' && str[i] <= '4')
 			count++;
-		else if ((av[i] < '1' || av[i] > '4') && av[i] != ' ')
+		else if ((str[i] < '1' || str[i] > '4') && str[i] != ' ')
 			return (1);
-		if (av[i] == ' ')
+		if (str[i] == ' ')
 			space += 1;
 		i++;
 	}
