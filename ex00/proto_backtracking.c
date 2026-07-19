@@ -6,16 +6,19 @@
 /*   By: amanet <amanet@student.42nice.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 20:56:19 by amanet            #+#    #+#             */
-/*   Updated: 2026/07/19 11:04:17 by amanet           ###   ########.fr       */
+/*   Updated: 2026/07/19 13:53:04 by amanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+#include <unistd.h>
 
 int	is_possible_relative_left(int nb, char grid[nb][nb], char rule[nb][nb]);
 int	is_possible_relative_top(int nb, char grid[nb][nb], char rule[nb][nb]);
 int	is_possible_relative_bottom(int nb, char grid[nb][nb], char rule[nb][nb]);
 int	is_possible_relative_right(int nb, char grid[nb][nb], char rule[nb][nb]);
 int	is_possible_simple(int nb, char grid[nb][nb]);
+void	print_output(int nb, char grid[nb][nb]);
+
 
 int	is_possible(int nb, char grid[nb][nb], char rule[nb][nb])
 {
@@ -52,18 +55,50 @@ int	is_finished(int nb, char grid[nb][nb])
 	return (1);
 }
 
-int	proto_backtracking(int nb, char grid[nb][nb], char rule[nb][nb])
+int	check_double(int nb, char grid[nb][nb], int pos[2], char c)
 {
-/*	int	i;
+	int i;
 
-	i = 1;
-	if (is_finished(nb, grid) == 1)
-		return (1);
-	while(i <= 4)
+	i = 0;
+	while (i < nb)
 	{
-	
-	}*/	
-	printf("%d\n", is_possible(nb, grid, rule));
+		if (grid[pos[0]][i] == c || grid[i][pos[1]] == c)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	proto_backtracking(int nb, char grid[nb][nb], char rule[nb][nb], int pos[2])
+{
+	char	c;
+	int		next_pos[2];
+
+	if (pos[0] == nb)
+		return (1);
+	if (pos[1] == nb)
+	{
+		next_pos[0] = pos[0] + 1;
+		next_pos[1] = 0;
+		return (proto_backtracking(nb, grid, rule, next_pos));
+	}
+	c = '1';	
+	while (c <= '4')
+	{
+		if (check_double(nb, grid, pos, c) == 1)
+			{
+				grid[pos[0]][pos[1]] = c;
+
+				next_pos[0] = pos[0];
+				next_pos[1] = pos[1] + 1;
+
+				if (proto_backtracking(nb, grid, rule, next_pos) == 1)
+					return(1);
+				grid[pos[0]][pos[1]] = '\0';
+			}
+		c++;
+	}
+	//printf("%d\n", is_possible(nb, grid, rule));
 	//printf("%d\n", is_possible_relative(nb, grid, rule));
 	return (0);
 }
@@ -80,9 +115,12 @@ int	main(void)
 	char	rule_left[4] = "1223";
 	char	rule_right[4] = "2231";
 	char	rule[4][4];
+	int		start_pos[2];
 	int		i;
 
 	i = 0;
+	start_pos[0] = 0;
+	start_pos[1] = 0;
 	while (i <= 3)
 	{
 		grid[0][i] = grid_0[i];
@@ -99,7 +137,9 @@ int	main(void)
 		rule[2][i] = rule_left[i];
 		rule[3][i] = rule_right[i];
 		i++;
-	}	
-	proto_backtracking(4, grid, rule);
-	printf("%s", rule[0]);
+	}
+	if (proto_backtracking(4, grid, rule, start_pos))
+		printf("finished\n");
+	print_output(4, grid);
+	//printf("%s", grid[0]);
 }

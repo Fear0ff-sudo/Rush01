@@ -6,13 +6,13 @@
 /*   By: amanet <amanet@student.42nice.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 14:20:47 by amanet            #+#    #+#             */
-/*   Updated: 2026/07/18 15:11:45 by amanet           ###   ########.fr       */
+/*   Updated: 2026/07/19 13:47:47 by amanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush.h"
+#include <unistd.h>
 
-void	print_output(struct s_skyscrapers *s1)
+void	print_output(int nb, char grid[nb][nb])
 {
 	int		i;
 	int		j;
@@ -24,7 +24,7 @@ void	print_output(struct s_skyscrapers *s1)
 		j = 0;
 		while (j <= 3)
 		{
-			ptr = s1->grid[i][j];
+			ptr = grid[i][j];
 			write(1, &ptr, 1);
 			if (j < 3)
 				write(1, " ", 1);
