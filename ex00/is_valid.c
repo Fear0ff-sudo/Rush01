@@ -6,7 +6,7 @@
 /*   By: lmartign <lmartign@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:30:06 by lmartign          #+#    #+#             */
-/*   Updated: 2026/07/18 15:44:36 by lmartign         ###   ########.fr       */
+/*   Updated: 2026/07/19 11:03:44 by lmartign         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 int	is_valid(char *av)
 {
 	int	i;
-	int	arg;
+	int	count;
 	int	space;
 
 	i = 0;
-	arg = 0;
+	count = 0;
 	space = 0;
 	while (av[i])
 	{
 		if (av[i] >= '1' && av[i] <= '4')
-			arg++;
+			count++;
 		else if ((av[i] < '1' || av[i] > '4') && av[i] != ' ')
 			return (1);
 		if (av[i] == ' ')
 			space += 1;
 		i++;
 	}
-	if (arg != 16 || space != 15)
+	if (count != 16 || space != 15)
 		return (1);
-	return (0);
+	return (count);
 }
 /*
 int	main(int argc, char **argv)
@@ -46,6 +46,8 @@ int	main(int argc, char **argv)
 		v = is_valid(argv[1]);
 		if (v == 1)
 			write(1, "Error", 5);
+		else if (v == 16)
+			write(1, "16", 2);
 	}
 	return (0);
 }*/
