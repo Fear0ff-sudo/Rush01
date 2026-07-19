@@ -6,13 +6,13 @@
 /*   By: lobaudar <lobaudar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:11:49 by lobaudar          #+#    #+#             */
-/*   Updated: 2026/07/19 13:11:02 by lobaudar         ###   ########.fr       */
+/*   Updated: 2026/07/19 14:22:49 by lobaudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
 
-void	fill_coll(t_skyscrapers *basic_cell, int i, int coll)
+char	**fill_coll(char **grid, int i, int coll)
 {
 	int	j;
 
@@ -21,7 +21,7 @@ void	fill_coll(t_skyscrapers *basic_cell, int i, int coll)
 		j = 0;
 		while (j <= 3)
 		{
-			basic_cell->grid[j][i] = j + '0' + 1;
+			grid[j][i] = j + '0' + 1;
 			j++;
 		}
 	}
@@ -30,42 +30,45 @@ void	fill_coll(t_skyscrapers *basic_cell, int i, int coll)
 		j = 3;
 		while (j >= 0)
 		{
-			basic_cell->grid[j][i] = j + '0' + 1;
+			grid[j][i] = j + '0' + 1;
 			j++;
 		}
 	}
+	return (grid);
 }
 
-void	fill_basic_cell_top(t_skyscrapers *basic_cell)
+char	**fill_basic_cell_top(char **grid, char *top)
 {
 	int	i;
 	int	coll;
 
 	coll = 1;
 	i = 0;
-	while (basic_cell->top[i])
+	while (top[i])
 	{
-		if (basic_cell->top[i] == '1')
-			basic_cell->grid[0][i] = '4';
-		if (basic_cell->top[i] == '4')
-			fill_coll(basic_cell, i, coll);
+		if (top[i] == '1')
+			grid[0][i] = '4';
+		if (top[i] == '4')
+			grid = fill_coll(grid, i, coll);
 		i++;
 	}
+	return (grid);
 }
 
-void	fill_basic_cell_bottom(t_skyscrapers *basic_cell)
+char	**fill_basic_cell_bottom(char **grid, char *bottom)
 {
 	int	i;
 	int	coll;
 
 	coll = -1;
 	i = 0;
-	while (basic_cell->bottom[i])
+	while (bottom[i])
 	{
-		if (basic_cell->bottom[i] == '1')
-			basic_cell->grid[3][i] = '4';
-		if (basic_cell->bottom[i] == '4')
-			fill_coll(basic_cell, i, coll);
+		if (bottom[i] == '1')
+			grid[3][i] = '4';
+		if (bottom[i] == '4')
+			grid = fill_coll(grid, i, coll);
 		i++;
 	}
+	return (grid);
 }

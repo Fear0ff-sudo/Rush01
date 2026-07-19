@@ -7,6 +7,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 14:20:47 by amanet            #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2026/07/19 13:47:47 by amanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -21,6 +22,13 @@ void	print_output(int nb, char grid[nb][nb])
 
 void	print_output(struct s_skyscrapers *s1)
 >>>>>>> f68b9d8416de48387f8db973d7dc1c9e24ff6aae
+=======
+/*   Updated: 2026/07/19 13:22:16 by lobaudar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	print_output(char **grid)
+>>>>>>> 6c44f0ad45abb4480bf0b6a42c2836eb03199b04
 {
 	int		i;
 	int		j;
