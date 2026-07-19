@@ -6,18 +6,19 @@
 /*   By: lobaudar <lobaudar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/19 14:51:33 by lobaudar          #+#    #+#             */
-/*   Updated: 2026/07/19 14:53:10 by lobaudar         ###   ########.fr       */
+/*   Updated: 2026/07/19 15:10:19 by amanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 
 int	is_possible_relative_left(int nb, char grid[nb][nb], char rule[nb][nb]);
 int	is_possible_relative_top(int nb, char grid[nb][nb], char rule[nb][nb]);
 int	is_possible_relative_bottom(int nb, char grid[nb][nb], char rule[nb][nb]);
 int	is_possible_relative_right(int nb, char grid[nb][nb], char rule[nb][nb]);
 int	is_possible_simple(int nb, char grid[nb][nb]);
-void	print_output(int nb, char grid[nb][nb]);
+void	print_output(char grid[4][4]);
 
 
 int	is_possible(int nb, char grid[nb][nb], char rule[nb][nb])
@@ -107,7 +108,7 @@ int	proto_backtracking(int nb, char grid[nb][nb], char rule[4][nb], int pos[2])
 
 int	main(void)
 {
-	char	grid_0[4] = "\04\0\0"; //"4213";
+	char	grid_0[4] = "\04\02"; //"4213";
 	char	grid_1[4] = "\03\0\0"; //"3142";
 	char	grid_2[4] = "\02\0\0"; //"2431";
 	char	grid_3[4] = "\01\04"; //"1324";
@@ -142,8 +143,5 @@ int	main(void)
 	}
 	if (proto_backtracking(4, grid, rule, start_pos))
 		printf("finished\n");
-	print_output(4, grid);
-	//printf("%s", grid[0]);
-	proto_backtracking(4, grid, rule);
-	printf("%s", rule[0]);
+	print_output(grid);
 }
