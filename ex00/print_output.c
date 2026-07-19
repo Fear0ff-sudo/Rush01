@@ -6,11 +6,11 @@
 /*   By: lobaudar <lobaudar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 14:20:47 by amanet            #+#    #+#             */
-/*   Updated: 2026/07/19 13:18:47 by lobaudar         ###   ########.fr       */
+/*   Updated: 2026/07/19 13:22:16 by lobaudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	print_output(struct s_skyscrapers *s1)
+void	print_output(char **grid)
 {
 	int		i;
 	int		j;
@@ -22,7 +22,7 @@ void	print_output(struct s_skyscrapers *s1)
 		j = 0;
 		while (j <= 3)
 		{
-			ptr = s1->grid[i][j];
+			ptr = grid[i][j];
 			write(1, &ptr, 1);
 			if (j < 3)
 				write(1, " ", 1);

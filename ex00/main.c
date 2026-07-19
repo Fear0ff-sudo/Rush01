@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   assign_params.c                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lobaudar <lobaudar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/19 11:23:20 by lmartign          #+#    #+#             */
-/*   Updated: 2026/07/19 14:37:07 by lobaudar         ###   ########.fr       */
+/*   Created: 2026/07/19 13:20:08 by lobaudar          #+#    #+#             */
+/*   Updated: 2026/07/19 14:44:08 by lobaudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	**ft_assign_params(char *str)
+#include <unistd.h>
+
+int		is_valid(char *av);
+char	**ft_assign_params(char *str);
+char	**basic_grid(char **params, char **grid);
+
+int	main(int ac, char **av)
 {
-	int		i;
-	int		j;
+	char	grid[4][4];
 	char	**params;
 
-	i = 0;
-	j = 0;
-	while (i <= 7)
-		params[0][j++] = str[i + 2];
-	params[0][j] = '\0';
-	j = 0;
-	while (i <= 14)
-		params[1][j++] = str[i + 2];
-	params[1][j] = '\0';
-	j = 0;
-	while (i <= 21)
-		params[2][j++] = str[i + 2];
-	params[2][j] = '\0';
-	j = 0;
-	while (i <= 28)
-		params[3][j++] = str[i + 2];
-	params[3][j] = '\0';
-	params[4][4] = '\0';
-	return (params);
+	if (ac != 2)
+		return (write(1, "Error\n", 1));
+	if (is_valid(av[1]) == 1)
+		return (write(1, "Error\n", 1));
+	params = ft_assign_params(av[1]);
+	grid = basic_grid(params, grid);
+
 }
