@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lobaudar <lobaudar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmartign <lmartign@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/19 13:20:08 by lobaudar          #+#    #+#             */
-/*   Updated: 2026/07/19 14:44:08 by lobaudar         ###   ########.fr       */
+/*   Updated: 2026/07/19 14:57:28 by lmartign         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int		is_valid(char *av);
+int		is_valid(char *str);
 char	**ft_assign_params(char *str);
 char	**basic_grid(char **params, char **grid);
 
@@ -27,5 +27,4 @@ int	main(int ac, char **av)
 		return (write(1, "Error\n", 1));
 	params = ft_assign_params(av[1]);
 	grid = basic_grid(params, grid);
-
 }
