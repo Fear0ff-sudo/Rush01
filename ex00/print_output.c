@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   print_output.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanet <amanet@student.42nice.fr>          +#+  +:+       +#+        */
+/*   By: lobaudar <lobaudar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 14:20:47 by amanet            #+#    #+#             */
-/*   Updated: 2026/07/18 15:11:45 by amanet           ###   ########.fr       */
+/*   Updated: 2026/07/19 13:18:47 by lobaudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "rush.h"
 
 void	print_output(struct s_skyscrapers *s1)
 {

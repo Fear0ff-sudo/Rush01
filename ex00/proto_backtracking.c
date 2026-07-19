@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   proto_backtracking.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanet <amanet@student.42nice.fr>          +#+  +:+       +#+        */
+/*   By: lobaudar <lobaudar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 20:56:19 by amanet            #+#    #+#             */
-/*   Updated: 2026/07/19 11:04:17 by amanet           ###   ########.fr       */
+/*   Updated: 2026/07/19 13:11:17 by lobaudar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
 
 int	is_possible_relative_left(int nb, char grid[nb][nb], char rule[nb][nb]);
 int	is_possible_relative_top(int nb, char grid[nb][nb], char rule[nb][nb]);
@@ -61,8 +61,8 @@ int	proto_backtracking(int nb, char grid[nb][nb], char rule[nb][nb])
 		return (1);
 	while(i <= 4)
 	{
-	
-	}*/	
+
+	}*/
 	printf("%d\n", is_possible(nb, grid, rule));
 	//printf("%d\n", is_possible_relative(nb, grid, rule));
 	return (0);
@@ -99,7 +99,7 @@ int	main(void)
 		rule[2][i] = rule_left[i];
 		rule[3][i] = rule_right[i];
 		i++;
-	}	
+	}
 	proto_backtracking(4, grid, rule);
 	printf("%s", rule[0]);
 }
