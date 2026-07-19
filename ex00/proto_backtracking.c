@@ -6,7 +6,7 @@
 /*   By: amanet <amanet@student.42nice.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 20:56:19 by amanet            #+#    #+#             */
-/*   Updated: 2026/07/19 13:53:04 by amanet           ###   ########.fr       */
+/*   Updated: 2026/07/19 14:34:18 by amanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -69,13 +69,17 @@ int	check_double(int nb, char grid[nb][nb], int pos[2], char c)
 	return (1);
 }
 
-int	proto_backtracking(int nb, char grid[nb][nb], char rule[nb][nb], int pos[2])
+int	proto_backtracking(int nb, char grid[nb][nb], char rule[4][nb], int pos[2])
 {
 	char	c;
 	int		next_pos[2];
 
 	if (pos[0] == nb)
-		return (1);
+	{
+		if(is_possible(nb, grid, rule) == 1)
+			return (1);
+		return(0);
+	}
 	if (pos[1] == nb)
 	{
 		next_pos[0] = pos[0] + 1;
@@ -98,22 +102,20 @@ int	proto_backtracking(int nb, char grid[nb][nb], char rule[nb][nb], int pos[2])
 			}
 		c++;
 	}
-	//printf("%d\n", is_possible(nb, grid, rule));
-	//printf("%d\n", is_possible_relative(nb, grid, rule));
 	return (0);
 }
 
 int	main(void)
 {
-	char	grid_0[4] = "4213";
-	char	grid_1[4] = "3142";
-	char	grid_2[4] = "2431";
-	char	grid_3[4] = "1324";
+	char	grid_0[4] = "\04\0\0"; //"4213";
+	char	grid_1[4] = "\03\0\0"; //"3142";
+	char	grid_2[4] = "\02\0\0"; //"2431";
+	char	grid_3[4] = "\01\04"; //"1324";
 	char	grid[4][4];
-	char	rule_top[4] = "1222";
-	char	rule_bottom[4] = "4231";
-	char	rule_left[4] = "1223";
-	char	rule_right[4] = "2231";
+	char	rule_top[4] = "3123"; //"1222";
+	char	rule_bottom[4] = "2421"; //"4231";
+	char	rule_left[4] = "2312"; //"1223";
+	char	rule_right[4] = "3221"; //"2231";
 	char	rule[4][4];
 	int		start_pos[2];
 	int		i;
